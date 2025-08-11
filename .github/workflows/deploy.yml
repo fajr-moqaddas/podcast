@@ -8,8 +8,6 @@ on:
       - main
 
 # مجوزهای لازم برای ورک‌فلو
-# contents: write برای کامیت کردن تغییرات در rss.xml و index.html
-# pages: write و id-token: write برای دیپلوی کردن در GitHub Pages
 permissions:
   contents: write
   pages: write
@@ -31,21 +29,17 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          # کش کردن پکیج‌ها برای اجرای سریع‌تر در دفعات بعدی
           cache: 'pip'
 
       # مرحله ۳: نصب کتابخانه‌های مورد نیاز پایتون
-      # پیشنهاد بهتر: می‌توانید یک فایل requirements.txt بسازید و pip install -r requirements.txt را اجرا کنید
       - name: Install dependencies
-        run: pip install mutagen
+        run: pip install mutagen jdatetime
 
       # مرحله ۴: اجرای اسکریپت برای ساخت فید و صفحه وب
       - name: Generate RSS feed and HTML page
         run: python generate_feed.py
 
       # مرحله ۵: کامیت کردن فایل‌های تغییر یافته (rss.xml, index.html)
-      # این اکشن به صورت خودکار بررسی می‌کند که آیا فایلی تغییر کرده یا نه
-      # و در صورت وجود تغییر، آن را کامیت و پوش می‌کند.
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
@@ -58,7 +52,6 @@ jobs:
         uses: actions/configure-pages@v5
 
       # مرحله ۷: آپلود کردن آرتیفکت سایت برای دیپلوی
-      # تمام محتوای ریشه پروژه به عنوان سایت در نظر گرفته می‌شود
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

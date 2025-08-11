@@ -1,25 +1,51 @@
 import os
 import glob
 import json
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from email.utils import formatdate
 from mutagen.mp3 import MP3
 import xml.etree.ElementTree as ET
+from xml.etree.ElementTree import tostring
+import jdatetime # کتابخانه برای تبدیل تاریخ میلادی به شمسی
 
 # --- پیکربندی پادکست ---
 PODCAST_CONFIG = {
     "title": "فجر مقدس",
     "description": "روایت به روایت شش ماه پایانی منتهی به ظهور. این پادکست، یک سفر روایی و تحلیلی بر اساس کتاب «شش ماه پایانی، فجر مقدس» نوشتۀ آقای مجتبی الساده است. در این مجموعۀ ۲۵ قسمتی، با هم قدم به قدم، نشانه‌ها و وقایع سال ظهور را بر اساس آیات و روایات اهل بیت (علیهم السلام) دنبال می‌کنیم.",
     "author": "امید و نورا",
-    # "email": "",
+    "email": "muhammad.shafiee@gmail.com",
     "language": "fa",
     "category": "Religion & Spirituality",
-    "subcategory": "Islam",
-    "explicit": "no",
-    "copyright": f"© {datetime.now().year} امید و نورا",
+    "subcategory": "Apocalypse",
+    "explicit": "false",
+    "copyright": f"© {datetime.now().year} Omid & Noora",
     "cover_art_filename": "cover.png",
     "base_url": "https://fajr-moqaddas.github.io/podcast"
 }
+
+# --- پیکربندی پلتفرم‌های پادکست ---
+PODCAST_PLATFORMS = [
+    {"name": "Apple Podcasts", "url": "https://podcasts.apple.com/us/podcast/%D9%81%D8%AC%D8%B1-%D9%85%D9%82%D8%AF%D8%B3/id1832430411", "icon_slug": "applepodcasts"},
+    {"name": "Spotify", "url": "https://open.spotify.com/show/6LTtgx7hAbTLa6nlFtos6D", "icon_slug": "spotify"},
+    {"name": "Pocket Casts", "url": "https://pocketcasts.com/podcasts/ff842480-58dc-013e-e08b-0e1ab590d6db", "icon_slug": "pocketcasts"},
+    {"name": "Deezer", "url": "https://www.deezer.com/us/show/1002106671", "icon_slug": None},
+    {"name": "Podcast Addict", "url": "https://podcastaddict.com/podcast/%D9%81%D8%AC%D8%B1%20%D9%85%D9%82%D8%AF%D8%B3/6045423", "icon_slug": "podcastaddict"},
+    {"name": "TuneIn", "url": "https://tunein.com/podcasts/Religion--Spirituality-Podcas/%d9%81%d8%ac%D8%b1-%D9%85%D9%82%D8%AF%D8%B3-p4664026/", "icon_slug": "tunein"},
+    {"name": "Podchaser", "url": "https://www.podchaser.com/podcasts/fgr-mkds-6181024", "icon_slug": None},
+    {"name": "PodBean", "url": "https://www.podbean.com/pw/dir-nkbqi-36b26b", "icon_slug": None},
+    {"name": "Spreaker", "url": "https://www.spreaker.com/podcast/fjr-mqds--6707968", "icon_slug": "spreaker"},
+    {"name": "Castro", "url": "https://castro.fm/podcast/08aad59e-30d0-49b5-b99c-4f5cc7c8bc08", "icon_slug": "castro"},
+    {"name": "Castbox", "url": "https://castbox.fm/vh/6711706", "icon_slug": "castbox"},
+    {"name": "Fountain", "url": "https://fountain.fm/show/t0Dxk9O9NHwcDCzcumI6", "icon_slug": None},
+    {"name": "Podcast Index", "url": "https://podcastindex.org/podcast/7445457", "icon_slug": "podcastindex"},
+    {"name": "PodLink", "url": "https://pod.link/aHR0cHM6Ly9mYWpyLW1vcWFkZGFzLmdpdGh1Yi5pby9wb2RjYXN0L3Jzcy54bWw", "icon_slug": None},
+    {"name": "Podurama", "url": "https://podurama.com/podcast/fjr-mqds-i1832430411", "icon_slug": None},
+    {"name": "Podverse", "url": "https://podverse.fm/podcast/Sk0aKdg-mf", "icon_slug": None},
+    {"name": "Curiocaster", "url": "https://curiocaster.com/podcast/pi7445457", "icon_slug": None},
+    {"name": "TrueFans", "url": "https://truefans.fm/fjr-mqds", "icon_slug": None},
+    {"name": "LNBeats", "url": "https://lnbeats.com/album/4a76c743-aa82-5fb8-8e2c-e3c39d5a4232", "icon_slug": None},
+]
+
 
 # --- مسیر فایل‌ها ---
 EPISODES_DIR = "episodes"
@@ -33,9 +59,22 @@ def get_mp3_metadata(filepath):
     metadata = {
         'duration_seconds': int(audio.info.length),
         'size_bytes': os.path.getsize(filepath),
-        'pub_date': datetime.fromtimestamp(os.path.getmtime(filepath))
     }
     return metadata
+
+def to_persian_digits(text):
+    """اعداد انگلیسی را به فارسی تبدیل می‌کند."""
+    persian_digits = "۰۱۲۳۴۵۶۷۸۹"
+    english_digits = "0123456789"
+    translation_table = str.maketrans(english_digits, persian_digits)
+    return str(text).translate(translation_table)
+
+def format_jalali_date(gregorian_date):
+    """تاریخ میلادی را به فرمت متنی شمسی تبدیل می‌کند."""
+    jdatetime.set_locale('fa_IR')
+    jalali_date = jdatetime.date.fromgregorian(date=gregorian_date)
+    # خروجی: ۲۶ مرداد ۱۴۰۴
+    return to_persian_digits(jalali_date.strftime("%d %B %Y"))
 
 def format_duration_for_html(seconds):
     """مدت زمان را برای نمایش در HTML به فرمت HH:MM:SS تبدیل می‌کند."""
@@ -51,14 +90,19 @@ def generate_rss_feed(episodes_metadata):
     ns = {
         'itunes': 'http://www.itunes.com/dtds/podcast-1.0.dtd',
         'atom': 'http://www.w3.org/2005/Atom',
-        'content': 'http://purl.org/rss/1.0/modules/content/'
+        'content': 'http://purl.org/rss/1.0/modules/content/',
+        'podcast': 'https://github.com/Podcast-Index/podcast-namespace/blob/main/docs/1.0.md'
     }
     ET.register_namespace('itunes', ns['itunes'])
     ET.register_namespace('atom', ns['atom'])
     ET.register_namespace('content', ns['content'])
+    ET.register_namespace('podcast', ns['podcast'])
     
     rss = ET.Element('rss', version='2.0', attrib={
-        'xmlns:itunes': ns['itunes'], 'xmlns:atom': ns['atom'], 'xmlns:content': ns['content']
+        'xmlns:itunes': ns['itunes'], 
+        'xmlns:atom': ns['atom'], 
+        'xmlns:content': ns['content'],
+        'xmlns:podcast': ns['podcast']
     })
     channel = ET.SubElement(rss, 'channel')
 
@@ -80,7 +124,13 @@ def generate_rss_feed(episodes_metadata):
     ET.SubElement(itunes_category, 'itunes:category', text=PODCAST_CONFIG['subcategory'])
     owner = ET.SubElement(channel, 'itunes:owner')
     ET.SubElement(owner, 'itunes:name').text = PODCAST_CONFIG['author']
-    # ET.SubElement(owner, 'itunes:email').text = PODCAST_CONFIG['email']
+    if PODCAST_CONFIG.get("email"):
+        ET.SubElement(owner, 'itunes:email').text = PODCAST_CONFIG['email']
+
+    if PODCAST_CONFIG.get("email"):
+        ET.SubElement(channel, 'podcast:locked', owner=PODCAST_CONFIG['email']).text = 'no'
+    else:
+        ET.SubElement(channel, 'podcast:locked').text = 'no'
 
     # --- Episode Items ---
     sorted_episodes = sorted(episodes_metadata, key=lambda x: x['filename'])
@@ -107,11 +157,15 @@ def generate_rss_feed(episodes_metadata):
         ET.SubElement(item, 'enclosure', {
             'url': f"{PODCAST_CONFIG['base_url']}/{EPISODES_DIR}/{meta['filename']}",
             'length': str(meta['size_bytes']),
-            'type': 'audio/mpeg'
+            'type': 'audio/mp3'
         })
 
-    tree = ET.ElementTree(rss)
-    tree.write(OUTPUT_RSS_FILE, encoding='UTF-8', xml_declaration=True)
+    xml_declaration = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    xml_string = tostring(rss, encoding='unicode')
+    
+    with open(OUTPUT_RSS_FILE, 'w', encoding='utf-8') as f:
+        f.write(xml_declaration + xml_string)
+
     print(f"✅ RSS feed saved to {OUTPUT_RSS_FILE}")
 
 def generate_html_page(episodes_metadata):
@@ -127,7 +181,19 @@ def generate_html_page(episodes_metadata):
         "height": "630",
         "alt": f"کاور آرت پادکست {PODCAST_CONFIG['title']}"
     }
+    
+    platforms_html = ""
+    if PODCAST_PLATFORMS:
+        platforms_html = '<div class="platforms">\n<h2>در پلتفرم‌های دیگر بشنوید</h2>\n<div class="platforms-grid">\n'
+        for p in PODCAST_PLATFORMS:
+            if p.get("icon_slug"):
+                icon_url = f'https://cdn.simpleicons.org/{p["icon_slug"]}'
+                platforms_html += f'<a href="{p["url"]}" target="_blank" rel="noopener noreferrer" class="platform-link icon-link" title="{p["name"]}"><img src="{icon_url}" alt="{p["name"]} icon"></a>\n'
+            else:
+                platforms_html += f'<a href="{p["url"]}" target="_blank" rel="noopener noreferrer" class="platform-link text-link">{p["name"]}</a>\n'
+        platforms_html += '</div>\n</div>'
 
+    # --- HTML Structure ---
     html = f"""
 <!DOCTYPE html>
 <html lang="{PODCAST_CONFIG['language']}" dir="rtl">
@@ -136,8 +202,9 @@ def generate_html_page(episodes_metadata):
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{PODCAST_CONFIG['title']}</title>
     <meta name="description" content="{PODCAST_CONFIG['description']}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
 
-    <!-- Social Media Meta Tags (Open Graph & Twitter) -->
+    <!-- Social Media Meta Tags -->
     <meta property="og:title" content="{PODCAST_CONFIG['title']}">
     <meta property="og:description" content="{PODCAST_CONFIG['description']}">
     <meta property="og:url" content="{PODCAST_CONFIG['base_url']}">
@@ -149,20 +216,30 @@ def generate_html_page(episodes_metadata):
     <meta property="og:image:width" content="{image_meta['width']}">
     <meta property="og:image:height" content="{image_meta['height']}">
     <meta property="og:image:alt" content="{image_meta['alt']}">
-    
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{PODCAST_CONFIG['title']}">
     <meta name="twitter:description" content="{PODCAST_CONFIG['description']}">
     <meta name="twitter:image" content="{image_meta['url']}">
 
     <style>
-        body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; margin: 0; background-color: #f8f9fa; color: #333; }}
+        body {{ font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.7; margin: 0; background-color: #f8f9fa; color: #333; }}
         .container {{ max-width: 800px; margin: 20px auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }}
         header {{ text-align: center; border-bottom: 1px solid #eee; padding-bottom: 20px; margin-bottom: 20px; }}
-        header img {{ max-width: 200px; border-radius: 8px; }}
+        header img.cover-art {{ max-width: 200px; border-radius: 8px; }}
         header h1 {{ margin: 10px 0 5px; }}
         header p.main-desc {{ color: #666; font-size: 1.1em; }}
-        .subscribe-button {{ display: inline-block; background-color: #9c27b0; color: #fff; padding: 12px 24px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 15px; }}
+        .subscribe-button {{ display: inline-flex; align-items: center; justify-content: center; gap: 10px; background-color: #ee802f; color: #fff; padding: 12px 24px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 15px; transition: background-color 0.2s ease; }}
+        .subscribe-button:hover {{ background-color: #d87020; }}
+        .subscribe-button img {{ height: 24px; }}
+        .platforms {{ margin-top: 25px; padding-top: 25px; border-top: 1px solid #eee; text-align: center; }}
+        .platforms h2 {{ font-size: 1.2em; color: #555; margin: 0 0 20px; }}
+        .platforms-grid {{ display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; }}
+        .platform-link {{ display: inline-flex; align-items: center; justify-content: center; text-decoration: none; border-radius: 5px; transition: transform 0.2s ease; }}
+        .platform-link:hover {{ transform: translateY(-2px); }}
+        .icon-link img {{ height: 32px; width: 32px; filter: grayscale(1); opacity: 0.7; transition: all 0.2s ease; }}
+        .icon-link:hover img {{ filter: grayscale(0); opacity: 1; }}
+        .text-link {{ background-color: #f0f0f0; color: #333; padding: 8px 12px; font-size: 0.9em; font-weight: 500; border: 1px solid transparent; }}
+        .text-link:hover {{ background-color: #e0e0e0; border-color: #ccc; }}
         .episode-list {{ list-style: none; padding: 0; }}
         .episode {{ border: 1px solid #ddd; border-radius: 8px; padding: 15px; margin-bottom: 15px; background-color: #fdfdfd; scroll-margin-top: 20px; }}
         .episode h3 {{ margin: 0 0 10px; }}
@@ -176,20 +253,24 @@ def generate_html_page(episodes_metadata):
 <body>
     <div class="container">
         <header>
-            <img src="{PODCAST_CONFIG['cover_art_filename']}" alt="{image_meta['alt']}">
+            <img src="{PODCAST_CONFIG['cover_art_filename']}" alt="{image_meta['alt']}" class="cover-art">
             <h1>{PODCAST_CONFIG['title']}</h1>
             <p class="main-desc">{PODCAST_CONFIG['description']}</p>
-            <a href="{PODCAST_CONFIG['base_url']}/{OUTPUT_RSS_FILE}" class="subscribe-button">دنبال کردن (RSS Feed)</a>
+            <a href="{PODCAST_CONFIG['base_url']}/{OUTPUT_RSS_FILE}" class="subscribe-button">
+                <img src="https://cdn.simpleicons.org/rss/white" alt="RSS icon">
+                <span>دنبال کردن (RSS Feed)</span>
+            </a>
+            {platforms_html}
         </header>
         <ul class="episode-list">
     """
     for meta in sorted_episodes:
         episode_html = f"""
             <li class="episode" id="episode-{meta['episode_number']}">
-                <h3>{meta['episode_number']}: {meta['title']}</h3>
+                <h3>{to_persian_digits(meta['episode_number'])}: {meta['title']}</h3>
                 <p class="summary">{meta['summary']}</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: {meta['pub_date'].strftime('%Y-%m-%d')}</span> | <span>مدت زمان: {format_duration_for_html(meta['duration_seconds'])}</span>
+                    <span>تاریخ انتشار: {format_jalali_date(meta['pub_date'])}</span> | <span>مدت زمان: {to_persian_digits(format_duration_for_html(meta['duration_seconds']))}</span>
                 </div>
                 <audio controls preload="none">
                     <source src="{PODCAST_CONFIG['base_url']}/{EPISODES_DIR}/{meta['filename']}" type="audio/mpeg">
@@ -201,7 +282,7 @@ def generate_html_page(episodes_metadata):
     html += f"""
         </ul>
         <footer>
-            <p style="text-align:center; color:#aaa;">{PODCAST_CONFIG['copyright']} | Published under the <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener noreferrer">GNU GPL v3.0</a>.</p>
+            <p style="text-align:center; color:#aaa;">{to_persian_digits(PODCAST_CONFIG['copyright'])} | Published under the <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener noreferrer">GNU GPL v3.0</a>.</p>
         </footer>
     </div>
 </body>
@@ -212,6 +293,7 @@ def generate_html_page(episodes_metadata):
     print(f"✅ HTML page saved to {OUTPUT_HTML_FILE}")
 
 if __name__ == "__main__":
+    # اطمینان از وجود فایل‌های مورد نیاز
     if not os.path.exists(EPISODES_JSON_FILE):
         print(f"Error: Metadata file '{EPISODES_JSON_FILE}' not found.")
         exit()
@@ -246,6 +328,18 @@ if __name__ == "__main__":
             all_metadata.append(combined_meta)
         
         if all_metadata:
+            # مرتب‌سازی قسمت‌ها بر اساس شماره
+            all_metadata.sort(key=lambda x: int(x['episode_number']))
+            
+            # تنظیم تاریخ انتشار قسمت‌ها به صورت معکوس از دیروز
+            publication_time = datetime.now(timezone.utc).replace(hour=12, minute=0, second=0, microsecond=0)
+            current_pub_date = publication_time - timedelta(days=1)
+
+            for i in range(len(all_metadata) - 1, -1, -1):
+                all_metadata[i]['pub_date'] = current_pub_date
+                current_pub_date -= timedelta(days=1)
+
+            # تولید فایل‌ها
             generate_rss_feed(all_metadata)
             generate_html_page(all_metadata)
             print("\nAll files generated successfully!")

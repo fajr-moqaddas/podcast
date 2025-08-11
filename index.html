@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>فجر مقدس</title>
     <meta name="description" content="روایت به روایت شش ماه پایانی منتهی به ظهور. این پادکست، یک سفر روایی و تحلیلی بر اساس کتاب «شش ماه پایانی، فجر مقدس» نوشتۀ آقای مجتبی الساده است. در این مجموعۀ ۲۵ قسمتی، با هم قدم به قدم، نشانه‌ها و وقایع سال ظهور را بر اساس آیات و روایات اهل بیت (علیهم السلام) دنبال می‌کنیم.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
 
-    <!-- Social Media Meta Tags (Open Graph & Twitter) -->
+    <!-- Social Media Meta Tags -->
     <meta property="og:title" content="فجر مقدس">
     <meta property="og:description" content="روایت به روایت شش ماه پایانی منتهی به ظهور. این پادکست، یک سفر روایی و تحلیلی بر اساس کتاب «شش ماه پایانی، فجر مقدس» نوشتۀ آقای مجتبی الساده است. در این مجموعۀ ۲۵ قسمتی، با هم قدم به قدم، نشانه‌ها و وقایع سال ظهور را بر اساس آیات و روایات اهل بیت (علیهم السلام) دنبال می‌کنیم.">
     <meta property="og:url" content="https://fajr-moqaddas.github.io/podcast">
@@ -19,20 +20,30 @@
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="کاور آرت پادکست فجر مقدس">
-    
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="فجر مقدس">
     <meta name="twitter:description" content="روایت به روایت شش ماه پایانی منتهی به ظهور. این پادکست، یک سفر روایی و تحلیلی بر اساس کتاب «شش ماه پایانی، فجر مقدس» نوشتۀ آقای مجتبی الساده است. در این مجموعۀ ۲۵ قسمتی، با هم قدم به قدم، نشانه‌ها و وقایع سال ظهور را بر اساس آیات و روایات اهل بیت (علیهم السلام) دنبال می‌کنیم.">
     <meta name="twitter:image" content="https://fajr-moqaddas.github.io/podcast/cover.png">
 
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; margin: 0; background-color: #f8f9fa; color: #333; }
+        body { font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.7; margin: 0; background-color: #f8f9fa; color: #333; }
         .container { max-width: 800px; margin: 20px auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         header { text-align: center; border-bottom: 1px solid #eee; padding-bottom: 20px; margin-bottom: 20px; }
-        header img { max-width: 200px; border-radius: 8px; }
+        header img.cover-art { max-width: 200px; border-radius: 8px; }
         header h1 { margin: 10px 0 5px; }
         header p.main-desc { color: #666; font-size: 1.1em; }
-        .subscribe-button { display: inline-block; background-color: #9c27b0; color: #fff; padding: 12px 24px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 15px; }
+        .subscribe-button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background-color: #ee802f; color: #fff; padding: 12px 24px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 15px; transition: background-color 0.2s ease; }
+        .subscribe-button:hover { background-color: #d87020; }
+        .subscribe-button img { height: 24px; }
+        .platforms { margin-top: 25px; padding-top: 25px; border-top: 1px solid #eee; text-align: center; }
+        .platforms h2 { font-size: 1.2em; color: #555; margin: 0 0 20px; }
+        .platforms-grid { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; }
+        .platform-link { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; border-radius: 5px; transition: transform 0.2s ease; }
+        .platform-link:hover { transform: translateY(-2px); }
+        .icon-link img { height: 32px; width: 32px; filter: grayscale(1); opacity: 0.7; transition: all 0.2s ease; }
+        .icon-link:hover img { filter: grayscale(0); opacity: 1; }
+        .text-link { background-color: #f0f0f0; color: #333; padding: 8px 12px; font-size: 0.9em; font-weight: 500; border: 1px solid transparent; }
+        .text-link:hover { background-color: #e0e0e0; border-color: #ccc; }
         .episode-list { list-style: none; padding: 0; }
         .episode { border: 1px solid #ddd; border-radius: 8px; padding: 15px; margin-bottom: 15px; background-color: #fdfdfd; scroll-margin-top: 20px; }
         .episode h3 { margin: 0 0 10px; }
@@ -46,18 +57,45 @@
 <body>
     <div class="container">
         <header>
-            <img src="cover.png" alt="کاور آرت پادکست فجر مقدس">
+            <img src="cover.png" alt="کاور آرت پادکست فجر مقدس" class="cover-art">
             <h1>فجر مقدس</h1>
             <p class="main-desc">روایت به روایت شش ماه پایانی منتهی به ظهور. این پادکست، یک سفر روایی و تحلیلی بر اساس کتاب «شش ماه پایانی، فجر مقدس» نوشتۀ آقای مجتبی الساده است. در این مجموعۀ ۲۵ قسمتی، با هم قدم به قدم، نشانه‌ها و وقایع سال ظهور را بر اساس آیات و روایات اهل بیت (علیهم السلام) دنبال می‌کنیم.</p>
-            <a href="https://fajr-moqaddas.github.io/podcast/rss.xml" class="subscribe-button">دنبال کردن (RSS Feed)</a>
+            <a href="https://fajr-moqaddas.github.io/podcast/rss.xml" class="subscribe-button">
+                <img src="https://cdn.simpleicons.org/rss/white" alt="RSS icon">
+                <span>دنبال کردن (RSS Feed)</span>
+            </a>
+            <div class="platforms">
+<h2>در پلتفرم‌های دیگر بشنوید</h2>
+<div class="platforms-grid">
+<a href="https://podcasts.apple.com/us/podcast/%D9%81%D8%AC%D8%B1-%D9%85%D9%82%D8%AF%D8%B3/id1832430411" target="_blank" rel="noopener noreferrer" class="platform-link icon-link" title="Apple Podcasts"><img src="https://cdn.simpleicons.org/applepodcasts" alt="Apple Podcasts icon"></a>
+<a href="https://open.spotify.com/show/6LTtgx7hAbTLa6nlFtos6D" target="_blank" rel="noopener noreferrer" class="platform-link icon-link" title="Spotify"><img src="https://cdn.simpleicons.org/spotify" alt="Spotify icon"></a>
+<a href="https://pocketcasts.com/podcasts/ff842480-58dc-013e-e08b-0e1ab590d6db" target="_blank" rel="noopener noreferrer" class="platform-link icon-link" title="Pocket Casts"><img src="https://cdn.simpleicons.org/pocketcasts" alt="Pocket Casts icon"></a>
+<a href="https://www.deezer.com/us/show/1002106671" target="_blank" rel="noopener noreferrer" class="platform-link text-link">Deezer</a>
+<a href="https://podcastaddict.com/podcast/%D9%81%D8%AC%D8%B1%20%D9%85%D9%82%D8%AF%D8%B3/6045423" target="_blank" rel="noopener noreferrer" class="platform-link icon-link" title="Podcast Addict"><img src="https://cdn.simpleicons.org/podcastaddict" alt="Podcast Addict icon"></a>
+<a href="https://tunein.com/podcasts/Religion--Spirituality-Podcas/%d9%81%d8%ac%D8%b1-%D9%85%D9%82%D8%AF%D8%B3-p4664026/" target="_blank" rel="noopener noreferrer" class="platform-link icon-link" title="TuneIn"><img src="https://cdn.simpleicons.org/tunein" alt="TuneIn icon"></a>
+<a href="https://www.podchaser.com/podcasts/fgr-mkds-6181024" target="_blank" rel="noopener noreferrer" class="platform-link text-link">Podchaser</a>
+<a href="https://www.podbean.com/pw/dir-nkbqi-36b26b" target="_blank" rel="noopener noreferrer" class="platform-link text-link">PodBean</a>
+<a href="https://www.spreaker.com/podcast/fjr-mqds--6707968" target="_blank" rel="noopener noreferrer" class="platform-link icon-link" title="Spreaker"><img src="https://cdn.simpleicons.org/spreaker" alt="Spreaker icon"></a>
+<a href="https://castro.fm/podcast/08aad59e-30d0-49b5-b99c-4f5cc7c8bc08" target="_blank" rel="noopener noreferrer" class="platform-link icon-link" title="Castro"><img src="https://cdn.simpleicons.org/castro" alt="Castro icon"></a>
+<a href="https://castbox.fm/vh/6711706" target="_blank" rel="noopener noreferrer" class="platform-link icon-link" title="Castbox"><img src="https://cdn.simpleicons.org/castbox" alt="Castbox icon"></a>
+<a href="https://fountain.fm/show/t0Dxk9O9NHwcDCzcumI6" target="_blank" rel="noopener noreferrer" class="platform-link text-link">Fountain</a>
+<a href="https://podcastindex.org/podcast/7445457" target="_blank" rel="noopener noreferrer" class="platform-link icon-link" title="Podcast Index"><img src="https://cdn.simpleicons.org/podcastindex" alt="Podcast Index icon"></a>
+<a href="https://pod.link/aHR0cHM6Ly9mYWpyLW1vcWFkZGFzLmdpdGh1Yi5pby9wb2RjYXN0L3Jzcy54bWw" target="_blank" rel="noopener noreferrer" class="platform-link text-link">PodLink</a>
+<a href="https://podurama.com/podcast/fjr-mqds-i1832430411" target="_blank" rel="noopener noreferrer" class="platform-link text-link">Podurama</a>
+<a href="https://podverse.fm/podcast/Sk0aKdg-mf" target="_blank" rel="noopener noreferrer" class="platform-link text-link">Podverse</a>
+<a href="https://curiocaster.com/podcast/pi7445457" target="_blank" rel="noopener noreferrer" class="platform-link text-link">Curiocaster</a>
+<a href="https://truefans.fm/fjr-mqds" target="_blank" rel="noopener noreferrer" class="platform-link text-link">TrueFans</a>
+<a href="https://lnbeats.com/album/4a76c743-aa82-5fb8-8e2c-e3c39d5a4232" target="_blank" rel="noopener noreferrer" class="platform-link text-link">LNBeats</a>
+</div>
+</div>
         </header>
         <ul class="episode-list">
     
             <li class="episode" id="episode-01">
-                <h3>01: طلیعۀ یک عشق</h3>
+                <h3>۰۱: طلیعۀ یک عشق</h3>
                 <p class="summary">معرفی پادکست و کتاب «فجر مقدس». در این قسمت با هدف مجموعه و دلیل نام‌گذاری آن به عنوان رمزی برای ظهور آشنا می‌شویم و سفری را برای درک عمیق‌تر بزرگترین واقعۀ تاریخ آغاز می‌کنیم.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:07:56</span>
+                    <span>تاریخ انتشار: ۲۶ تیر ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۰۷:۵۶</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/01.mp3" type="audio/mpeg">
@@ -66,10 +104,10 @@
             </li>
         
             <li class="episode" id="episode-02">
-                <h3>02: مهدی در مُصحَف</h3>
+                <h3>۰۲: مهدی در مُصحَف</h3>
                 <p class="summary">بررسی ریشه‌های قرآنی باور به مهدویت. در این قسمت، با مفهوم «تأویل» و آیاتی که طبق روایات به امام مهدی (ع) و حکومت جهانی ایشان اشاره دارند، آشنا می‌شویم.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:11:15</span>
+                    <span>تاریخ انتشار: ۲۷ تیر ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۱۱:۱۵</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/02.mp3" type="audio/mpeg">
@@ -78,10 +116,10 @@
             </li>
         
             <li class="episode" id="episode-03">
-                <h3>03: میراث نَبَوی</h3>
+                <h3>۰۳: میراث نَبَوی</h3>
                 <p class="summary">سفر به سرچشمۀ این باور در کلام پیامبر (ص)، امام علی (ع) و حضرت زهرا (س). این قسمت نشان می‌دهد که مهدویت یک میراث متواتر و سینه به سینه از بنیان‌گذاران اسلام است.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:09:40</span>
+                    <span>تاریخ انتشار: ۲۸ تیر ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۰۹:۴۰</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/03.mp3" type="audio/mpeg">
@@ -90,10 +128,10 @@
             </li>
         
             <li class="episode" id="episode-04">
-                <h3>04: میراث حَسَنَین و سَجّاد (علیهم السلام)</h3>
+                <h3>۰۴: میراث حَسَنَین و سَجّاد (علیهم السلام)</h3>
                 <p class="summary">دنبال کردن زنجیرۀ نورانی میراث مهدوی در کلام امام حسن (ع)، امام حسین (ع) و امام سجاد (ع). هر امام، بُعدی جدید از شخصیت و قیام قائم آل محمد را برای ما آشکار می‌سازد.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:10:28</span>
+                    <span>تاریخ انتشار: ۲۹ تیر ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۱۰:۲۸</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/04.mp3" type="audio/mpeg">
@@ -102,10 +140,10 @@
             </li>
         
             <li class="episode" id="episode-05">
-                <h3>05: میراث باقِرَین و صادِقَین (علیهم السلام)</h3>
+                <h3>۰۵: میراث باقِرَین و صادِقَین (علیهم السلام)</h3>
                 <p class="summary">ورود به عصر شکوفایی علمی تشیع و بررسی روایات امام باقر (ع)، امام صادق (ع) و امام کاظم (ع). در این دوره جزئیات دقیق‌تری از هویت، غیبت و قیام امام مهدی (ع) تبیین می‌شود.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:10:55</span>
+                    <span>تاریخ انتشار: ۳۰ تیر ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۱۰:۵۵</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/05.mp3" type="audio/mpeg">
@@ -114,10 +152,10 @@
             </li>
         
             <li class="episode" id="episode-06">
-                <h3>06: میراث امامان پایانی</h3>
+                <h3>۰۶: میراث امامان پایانی</h3>
                 <p class="summary">نزدیک شدن به عصر غیبت و بررسی کلام امام رضا (ع)، امام جواد (ع) و امام هادی (ع). در این دوران، بشارت‌ها و هشدارها برای آماده‌سازی شیعیان دقیق‌تر و شفاف‌تر می‌شود.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:12:19</span>
+                    <span>تاریخ انتشار: ۳۱ تیر ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۱۲:۱۹</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/06.mp3" type="audio/mpeg">
@@ -126,10 +164,10 @@
             </li>
         
             <li class="episode" id="episode-07">
-                <h3>07: در آستانۀ غیبت</h3>
+                <h3>۰۷: در آستانۀ غیبت</h3>
                 <p class="summary">ایستگاه پایانی فصل اول. بررسی دو حدیث کلیدی از امام حسن عسکری (ع) و خودِ حضرت حجت (عج) که در آن، آخرین قطعه‌های پازل برای ورود به دوران غیبت تکمیل می‌شود.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:10:29</span>
+                    <span>تاریخ انتشار: ۰۱ مرداد ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۱۰:۲۹</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/07.mp3" type="audio/mpeg">
@@ -138,10 +176,10 @@
             </li>
         
             <li class="episode" id="episode-08">
-                <h3>08: از غیبت تا ظهورِ اَصغَر</h3>
+                <h3>۰۸: از غیبت تا ظهورِ اَصغَر</h3>
                 <p class="summary">آغاز فصل دوم و بررسی فلسفۀ غیبت صغری به عنوان یک دورۀ گذار. در این قسمت با مفهوم «ظهور اصغر» به معنای آمادگی علمی، معنوی و سیاسی جهان برای ظهور اکبر آشنا می‌شویم.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:11:07</span>
+                    <span>تاریخ انتشار: ۰۲ مرداد ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۱۱:۰۷</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/08.mp3" type="audio/mpeg">
@@ -150,10 +188,10 @@
             </li>
         
             <li class="episode" id="episode-09">
-                <h3>09: جهان در فتنه؛ کلام پیامبر (ص) به سلمان</h3>
+                <h3>۰۹: جهان در فتنه؛ کلام پیامبر (ص) به سلمان</h3>
                 <p class="summary">روایت کامل حدیث تکان‌دهندۀ پیامبر (ص) به سلمان فارسی دربارۀ فتنه‌های آخرالزمان. این حدیث، آینه‌ای تمام‌نما از انحرافات اجتماعی و اخلاقی پیش از ظهور است.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:11:28</span>
+                    <span>تاریخ انتشار: ۰۳ مرداد ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۱۱:۲۸</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/09.mp3" type="audio/mpeg">
@@ -162,10 +200,10 @@
             </li>
         
             <li class="episode" id="episode-10">
-                <h3>10: پژواک تاریخ (بخش اول)</h3>
+                <h3>۱۰: پژواک تاریخ (بخش اول)</h3>
                 <p class="summary">بررسی پیشگویی‌های محقق‌شدۀ اهل بیت (ع) در طول تاریخ، از جمله سقوط بنی‌امیه و بنی‌عباس و قیام صاحب‌الزنج، تا به صدق باقی اخبار و نشانه‌ها اطمینان حاصل کنیم.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:08:11</span>
+                    <span>تاریخ انتشار: ۰۴ مرداد ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۰۸:۱۱</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/10.mp3" type="audio/mpeg">
@@ -174,10 +212,10 @@
             </li>
         
             <li class="episode" id="episode-11">
-                <h3>11: پژواک تاریخ (بخش دوم)</h3>
+                <h3>۱۱: پژواک تاریخ (بخش دوم)</h3>
                 <p class="summary">ادامۀ سفر به اعماق تاریخ و بررسی پیشگویی‌های شگفت‌انگیز دیگر، از جمله ظهور علم از شهر قم و انطباق حدیث جابر بر رویدادهای تاریخی مانند استعمار منطقه توسط غرب.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:09:55</span>
+                    <span>تاریخ انتشار: ۰۵ مرداد ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۰۹:۵۵</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/11.mp3" type="audio/mpeg">
@@ -186,10 +224,10 @@
             </li>
         
             <li class="episode" id="episode-12">
-                <h3>12: سالِ موعود؛ باران‌ها و لرزه‌ها</h3>
+                <h3>۱۲: سالِ موعود؛ باران‌ها و لرزه‌ها</h3>
                 <p class="summary">آغاز مینی‌سریال «روزشمار فجر مقدس». در این قسمت با ویژگی‌های کلی «سال ظهور» آشنا می‌شویم؛ سالی فرد، پر از باران‌های سیل‌آسا، زلزله‌ها، فتنه‌ها و آزمون‌های سخت.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:07:58</span>
+                    <span>تاریخ انتشار: ۰۶ مرداد ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۰۷:۵۸</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/12.mp3" type="audio/mpeg">
@@ -198,10 +236,10 @@
             </li>
         
             <li class="episode" id="episode-13">
-                <h3>13: رجب؛ سه پرچم برمی‌خیزند</h3>
+                <h3>۱۳: رجب؛ سه پرچم برمی‌خیزند</h3>
                 <p class="summary">ورود به ماه رجب، پنج ماه قبل از ظهور. در این ماه، سه جریان اصلی سفیانی (باطل)، یمانی و خراسانی (حق) قیام کرده و آرایش نهایی نبردهای آخرالزمان را شکل می‌دهند.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:10:40</span>
+                    <span>تاریخ انتشار: ۰۷ مرداد ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۱۰:۴۰</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/13.mp3" type="audio/mpeg">
@@ -210,10 +248,10 @@
             </li>
         
             <li class="episode" id="episode-14">
-                <h3>14: رجب؛ نشانه‌های آسمان</h3>
+                <h3>۱۴: رجب؛ نشانه‌های آسمان</h3>
                 <p class="summary">بررسی چهار آیت و معجزۀ آسمانی در ماه رجب: ظهور بدن و دستی در آسمان، سه ندای جهانی، توقف چندساعتۀ خورشید و خسوف ماه در شبی غیرعادی برای اتمام حجت بر همگان.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:08:55</span>
+                    <span>تاریخ انتشار: ۰۸ مرداد ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۰۸:۵۵</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/14.mp3" type="audio/mpeg">
@@ -222,10 +260,10 @@
             </li>
         
             <li class="episode" id="episode-15">
-                <h3>15: شعبان و رمضان؛ صَیحۀ بزرگ</h3>
+                <h3>۱۵: شعبان و رمضان؛ صَیحۀ بزرگ</h3>
                 <p class="summary">بررسی وقایع ماه‌های شعبان و رمضان. در این قسمت به دو آیت آسمانیِ کسوف و خسوف غیرعادی و مهم‌تر از آن، صیحۀ بزرگ آسمانی جبرئیل در شب قدر به عنوان یکی از علائم حتمی می‌پردازیم.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:10:07</span>
+                    <span>تاریخ انتشار: ۰۹ مرداد ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۱۰:۰۷</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/15.mp3" type="audio/mpeg">
@@ -234,10 +272,10 @@
             </li>
         
             <li class="episode" id="episode-16">
-                <h3>16: شوال؛ نبرد قِرْقیسیا</h3>
+                <h3>۱۶: شوال؛ نبرد قِرْقیسیا</h3>
                 <p class="summary">ورود به ماه شوال و روایت نبرد عظیم و خونین قرقیسیا. جنگی میان ستمگران بر سر گنجی بزرگ که با کشته‌شدن صدها هزار نفر، به یک پاکسازی الهی بزرگ تبدیل می‌شود.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:08:12</span>
+                    <span>تاریخ انتشار: ۱۰ مرداد ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۰۸:۱۲</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/16.mp3" type="audio/mpeg">
@@ -246,10 +284,10 @@
             </li>
         
             <li class="episode" id="episode-17">
-                <h3>17: ذی‌القعده؛ تراژدی عراق</h3>
+                <h3>۱۷: ذی‌القعده؛ تراژدی عراق</h3>
                 <p class="summary">روایت ماه ذی‌القعده و جنایات هولناک لشکر سفیانی در عراق. در این ماه، بغداد به یک قربانگاه بزرگ تبدیل شده و وحشتی بی‌سابقه بر این سرزمین حاکم می‌شود.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:07:35</span>
+                    <span>تاریخ انتشار: ۱۱ مرداد ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۰۷:۳۵</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/17.mp3" type="audio/mpeg">
@@ -258,10 +296,10 @@
             </li>
         
             <li class="episode" id="episode-18">
-                <h3>18: ذی‌الحِجَّه؛ خون در حَرَم</h3>
+                <h3>۱۸: ذی‌الحِجَّه؛ خون در حَرَم</h3>
                 <p class="summary">ورود به آخرین ماه قبل از ظهور. در این ماه خونین، شاهد آشوب‌های منا و مهم‌تر از همه، شهادت «نفس زکیه» به عنوان آخرین علامت حتمی ظهور، تنها پانزده روز قبل از قیام، خواهیم بود.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:08:12</span>
+                    <span>تاریخ انتشار: ۱۲ مرداد ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۰۸:۱۲</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/18.mp3" type="audio/mpeg">
@@ -270,10 +308,10 @@
             </li>
         
             <li class="episode" id="episode-19">
-                <h3>19: مُحَرَّم؛ شبِ قَدْرِ موعود</h3>
+                <h3>۱۹: مُحَرَّم؛ شبِ قَدْرِ موعود</h3>
                 <p class="summary">روایت شب عاشورا، شب ظهور. در این شب سرنوشت‌ساز، ۳۱۳ یار خاص امام (ع) به صورت معجزه‌آسا و در یک چشم به هم زدن، از سراسر جهان در مکه گرد هم می‌آیند.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:08:09</span>
+                    <span>تاریخ انتشار: ۱۳ مرداد ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۰۸:۰۹</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/19.mp3" type="audio/mpeg">
@@ -282,10 +320,10 @@
             </li>
         
             <li class="episode" id="episode-20">
-                <h3>20: مُحَرَّم؛ روزِ طلوع</h3>
+                <h3>۲۰: مُحَرَّم؛ روزِ طلوع</h3>
                 <p class="summary">روایت صبح عاشورا، روز ظهور. در این روز باشکوه، امام مهدی (ع) در مسجدالحرام اولین خطبۀ جهانی خود را ایراد کرده و ۳۱۳ یار ایشان، اولین بیعت‌کنندگان تاریخ خواهند بود.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:08:56</span>
+                    <span>تاریخ انتشار: ۱۴ مرداد ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۰۸:۵۶</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/20.mp3" type="audio/mpeg">
@@ -294,10 +332,10 @@
             </li>
         
             <li class="episode" id="episode-21">
-                <h3>21: مُحَرَّم؛ انتقام الهی</h3>
+                <h3>۲۱: مُحَرَّم؛ انتقام الهی</h3>
                 <p class="summary">بررسی اولین معجزۀ بزرگ پس از ظهور. لشکر سفیانی برای نابودی نهضت به سوی مکه حرکت می‌کند اما در بیابان «بیداء» با انتقام الهی روبرو شده و در زمین فرو می‌رود (خسف بیداء).</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:07:53</span>
+                    <span>تاریخ انتشار: ۱۵ مرداد ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۰۷:۵۳</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/21.mp3" type="audio/mpeg">
@@ -306,10 +344,10 @@
             </li>
         
             <li class="episode" id="episode-22">
-                <h3>22: شرایط پیروزی</h3>
+                <h3>۲۲: شرایط پیروزی</h3>
                 <p class="summary">آغاز فصل پایانی و بررسی فلسفۀ ظهور. در این قسمت با چهار شرط بنیادین و تضمین‌کنندۀ پیروزی قیام امام (ع) آشنا می‌شویم: ایدئولوژی کامل، رهبر بی‌نظیر، یاران فداکار و پایگاه مردمی آماده.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:08:02</span>
+                    <span>تاریخ انتشار: ۱۶ مرداد ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۰۸:۰۲</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/22.mp3" type="audio/mpeg">
@@ -318,10 +356,10 @@
             </li>
         
             <li class="episode" id="episode-23">
-                <h3>23: تقدیر و مشیت</h3>
+                <h3>۲۳: تقدیر و مشیت</h3>
                 <p class="summary">ورود به بحث عمیق «بَداء» و ارتباط آن با نشانه‌های ظهور. در این قسمت می‌فهمیم کدام نشانه‌ها (علائم حتمی) غیرقابل تغییر و کدامیک مشروط و قابل تغییر هستند.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:08:47</span>
+                    <span>تاریخ انتشار: ۱۷ مرداد ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۰۸:۴۷</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/23.mp3" type="audio/mpeg">
@@ -330,10 +368,10 @@
             </li>
         
             <li class="episode" id="episode-24">
-                <h3>24: رازِ وقتِ پنهان</h3>
+                <h3>۲۴: رازِ وقتِ پنهان</h3>
                 <p class="summary">بررسی مسئلۀ «توقیت» یا تعیین وقت برای ظهور. در این قسمت به حکمت پنهان بودن زمان ظهور می‌پردازیم که هم برای حفظ امید مؤمنان و هم برای غافلگیری دشمنان ضروری است.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:08:32</span>
+                    <span>تاریخ انتشار: ۱۸ مرداد ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۰۸:۳۲</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/24.mp3" type="audio/mpeg">
@@ -342,10 +380,10 @@
             </li>
         
             <li class="episode" id="episode-25">
-                <h3>25: دعای فرج؛ کلام آخر</h3>
+                <h3>۲۵: دعای فرج؛ کلام آخر</h3>
                 <p class="summary">ایستگاه پایانی پادکست. با هم دعای پایانی کتاب را زمزمه می‌کنیم و با مروری بر وظیفۀ خود به عنوان یک منتظر (انتظار فعال و آمادگی)، این سفر معرفتی را به پایان می‌رسانیم.</p>
                 <div class="episode-meta">
-                    <span>تاریخ انتشار: 2025-08-10</span> | <span>مدت زمان: 00:08:42</span>
+                    <span>تاریخ انتشار: ۱۹ مرداد ۱۴۰۴</span> | <span>مدت زمان: ۰۰:۰۸:۴۲</span>
                 </div>
                 <audio controls preload="none">
                     <source src="https://fajr-moqaddas.github.io/podcast/episodes/25.mp3" type="audio/mpeg">
@@ -355,7 +393,7 @@
         
         </ul>
         <footer>
-            <p style="text-align:center; color:#aaa;">© 2025 امید و نورا | Published under the <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener noreferrer">GNU GPL v3.0</a>.</p>
+            <p style="text-align:center; color:#aaa;">© ۲۰۲۵ Omid & Noora | Published under the <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener noreferrer">GNU GPL v3.0</a>.</p>
         </footer>
     </div>
 </body>
